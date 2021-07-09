@@ -1,1 +1,9 @@
-<p>login works!</p>
+<mat-card>
+    <mat-card-content>
+        <h2>Log In</h2>
+        <mat-form-field class="full-width-input" >
+            <input matInput placeholder="Email" id="usuario" type="email" [(ngModel)]="usuario.email" required>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="fazerLogin()">Login</button>
+    </mat-card-content>
+  </mat-card>

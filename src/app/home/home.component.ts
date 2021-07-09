@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../login/auth.service';
+import { Usuario } from '../login/usuario';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  user!: any;
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-  }
+    var id = localStorage.getItem('id')
+    if(id === String(0)){
+      console.log("entrei");
+      this.router.navigate(['/']);
+    }else{
+      var i: number = Number(localStorage.getItem('id'));
+      this.authService.getUser(i).subscribe(
+        data =>{
+          this.user = data;
+          console.log(this.user);
+        }
+      );
+    }
+    // console.log(localStorage.getItem('usuario'));
+    
+
+    }
 
 }

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './login/auth.service';
+import { Usuario } from './login/usuario';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'IASocial';
+  usuarioLogado!: Usuario;
+
+  constructor( private authService: AuthService, private router: Router) {
+
+  }
+
+  ngOnInit() {
+  }
+
+  logout(){
+    // console.log('logout');
+    this.authService.fazerLogout();
+  }
+
+  home(){
+    this.router.navigate(['/']);
+  }
+
 }
