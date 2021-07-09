@@ -1,3 +1,5 @@
-<div class="container">
-    <h2>Welcome, {{user.name}}</h2>
-</div>
+<mat-grid-list cols = "4" rowHeight = "1:1">
+    <mat-grid-tile [colspan] = "1" [rowspan] = "1" style="background-color: aqua;"><h2>Welcome, {{user.name}}! </h2> </mat-grid-tile>
+    <mat-grid-tile [colspan] = "3" [rowspan] = "2" style="background-color: rgb(0, 214, 36);"> <h2>Aqui ficarão os posts! </h2></mat-grid-tile>
+    <mat-grid-tile [colspan] = "1" [rowspan] = "1" style="background-color: rgb(219, 199, 14);"></mat-grid-tile>
+ </mat-grid-list>
