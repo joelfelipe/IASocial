@@ -33,6 +33,7 @@ overflow:auto;
 #show{
     width: 90%;
     margin: auto;
+    visibility:hidden;
 }
 
 #comentarios{
@@ -40,6 +41,7 @@ overflow:auto;
     height: 90%;
     margin: auto;
     overflow-y: scroll;
+    visibility:hidden;
 }
 
 #h1comentario{
@@ -47,9 +49,27 @@ overflow:auto;
     vertical-align: top;
 }
 
-#grid{
+#grid, #grid1, #grid2{
     background-color: rgb(241, 239, 239);
     border: 8px solid;
     border-color:rgb(75, 75, 77);
 }
+
+#hide{
+    /* width: 100%; */
+    text-align: center;
+    margin: auto;
+    vertical-align: middle;
+    margin-left: 50%;
+    margin-right: auto;
+    
+}
+
+#post{
+    width: 100%;
+}
+
+.example-card {
+    max-width: 400px;
+  }
 

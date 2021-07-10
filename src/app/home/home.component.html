@@ -1,6 +1,14 @@
 <mat-grid-list cols="3" rowHeight="3:1">
     <mat-grid-tile [colspan]="1" [rowspan]="4" id="grid">
-        <h1>Welcome, {{user.name}}! </h1>
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{user.name}}</mat-card-title>
+                <mat-card-subtitle>{{user.username}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="../../assets/user-icon.jpg"
+                alt="Photo of {{user.name}}">
+        </mat-card>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="4" id="Content" id="grid">
         <div>
@@ -19,7 +27,8 @@
                             <h3>{{p.title}}</h3>
                         </td>
                         <td class="botao">
-                            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" id="{{p.id}}" (click)="openModal(p.id)"> 
+                            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon"
+                                id="{{p.id}}" (click)="openModal(p.id)">
                                 <mat-icon>visibility</mat-icon>
                             </button>
                         </td>
@@ -29,11 +38,17 @@
             <pagination-controls (pageChange)="pag = $event" class="text-right"></pagination-controls>
         </div>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="2" id="grid">
-        <div id="show" class="row">    
+    <mat-grid-tile [colspan]="1" [rowspan]="2" id="grid1">
+        <div id="post">
+            <div id="show" class="row">
+            </div>
+            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" id="hide"
+                (click)="close()" [disabled]="isDisabled">
+                <mat-icon>visibility_off</mat-icon>
+            </button>
         </div>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="2" id="grid">
+    <mat-grid-tile [colspan]="1" [rowspan]="2" id="grid2">
         <div id="comentarios" class="row">
         </div>
     </mat-grid-tile>
