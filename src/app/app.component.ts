@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './service/auth.service';
-import { Usuario } from './login/usuario';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +9,6 @@ import { Usuario } from './login/usuario';
 })
 export class AppComponent {
   title = 'IASocial';
-  usuarioLogado!: Usuario;
 
   constructor( private authService: AuthService, private router: Router) {
 

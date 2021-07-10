@@ -48,8 +48,9 @@ export class HomeComponent implements OnInit {
 
   carregaPosts() {
     this.postService.getPosts().subscribe(
-      (data: Post) => {
-        this.posts = data;
+      (data) => {
+        this.posts = data.reverse();
+        //this.posts = data;
         console.log(this.posts);
       }
     );

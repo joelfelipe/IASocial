@@ -2,7 +2,6 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/user.model';
 import { AuthService } from '../service/auth.service';
-import { Usuario } from './usuario';
 
 @Component({
   selector: 'app-login',
@@ -31,12 +30,15 @@ export class LoginComponent implements OnInit {
     this.authService.fazerLogin().subscribe(
       (data: User) => {
         this.usuarios = data;
+
         for(let item of this.usuarios){
           if(item.email === this.usuario.email){
             localStorage.setItem('id', String(item.id))
             this.router.navigate(['/']);
           }
         }
+        if(localStorage.getItem('id') === null)
+          alert("Usuário inexistente!");
       }, error => {
         this.erro = error;
       }
