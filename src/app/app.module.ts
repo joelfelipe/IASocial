@@ -49,8 +49,10 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
-import { AuthService } from './login/auth.service';
+import { AuthService } from './service/auth.service';
+import { PostService } from './service/post.service'
 import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -108,7 +110,8 @@ import { HttpClientModule } from '@angular/common/http';
     PortalModule,
     ScrollingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   exports: [
     BrowserModule,
@@ -159,7 +162,7 @@ import { HttpClientModule } from '@angular/common/http';
     ScrollingModule,
     FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,10 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../login/auth.service';
-import { Usuario } from '../login/usuario';
+import { AuthService } from '../service/auth.service';
+import { Post } from '../model/post.model';
+import { User } from '../model/user.model';
+import { PostService } from '../service/post.service';
 
 @Component({
   selector: 'app-home',
@@ -10,26 +13,45 @@ import { Usuario } from '../login/usuario';
 })
 export class HomeComponent implements OnInit {
 
-  user!: any;
-  constructor(private authService: AuthService, private router: Router) { }
+  user: User = new User();
+  // posts: Post = new Post();
+  posts: any;
+  pag : number = 1 ;
+  contador : number = 10;
+  constructor(private authService: AuthService, private router: Router, private postService: PostService) {
+
+  }
 
   ngOnInit(): void {
+    this.iniciar();
+    this.carregaPosts();
+  }
+  // console.log(localStorage.getItem('usuario'));
+
+  iniciar() {
     var id = localStorage.getItem('id')
-    if(id === String(0)){
+    console.log(id);
+    if (id == null ) {
       console.log("entrei");
       this.router.navigate(['/']);
-    }else{
+    } else {
       var i: number = Number(localStorage.getItem('id'));
       this.authService.getUser(i).subscribe(
-        data =>{
+        (data: User) => {
           this.user = data;
           console.log(this.user);
         }
       );
     }
-    // console.log(localStorage.getItem('usuario'));
-    
+  }
 
-    }
+  carregaPosts(){
+    this.postService.getPosts().subscribe(
+      (data: Post) => {
+        this.posts = data;
+        console.log(this.posts);
+      }
+    );
+  }
 
 }
