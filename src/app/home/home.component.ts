@@ -16,8 +16,9 @@ export class HomeComponent implements OnInit {
   user: User = new User();
   post: Post = new Post();
   posts: any;
-  pag : number = 1 ;
-  contador : number = 8;
+  coments: any;
+  pag: number = 1;
+  contador: number = 8;
   constructor(private authService: AuthService, private router: Router, private postService: PostService) {
 
   }
@@ -31,7 +32,7 @@ export class HomeComponent implements OnInit {
   iniciar() {
     var id = localStorage.getItem('id')
     console.log(id);
-    if (id == null ) {
+    if (id == null) {
       console.log("entrei");
       this.router.navigate(['/']);
     } else {
@@ -45,7 +46,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  carregaPosts(){
+  carregaPosts() {
     this.postService.getPosts().subscribe(
       (data: Post) => {
         this.posts = data;
@@ -54,29 +55,41 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  openModal(id: any){
+  openModal(id: any) {
     console.log(id);
     this.postService.getPost(id).subscribe(
       (data: Post) => {
         this.post = data;
         console.log(this.post);
         const element = document.getElementById("show");
-        if(element != null){
-          element.innerHTML = "<h1>" + this.post.title + "</h1>" + 
-                              "<p>" + this.post.body + "</p>";
+        if (element != null) {
+          element.innerHTML = "<h1 style=\"font-weight: bold;\">" + this.post.title + "</h1>" +
+            "<p>" + this.post.body + "</p>";
         }
-         
+
       }
     );
-    const element2 = document.getElementById("comentarios");
-    if(element2 != null){
-      element2.innerHTML = "<h1>Comentários</h1>" + 
-                           "<p>este é um comentario exemplo</p>";
-    }
-    
+    this.postService.getComent(id).subscribe(
+      (data: Post) => {
+        this.coments = data;
+        console.log(this.post);
+        const element2 = document.getElementById("comentarios");
+        if (element2 != null) {
+          var s = '<h1 style=\"font-weight: bold;\">Comentários</h1>';
+          for(let c of this.coments){
+            s += "<h3 style=\"font-weight: bold;\">" + c.name + " comentou:</h3>" +
+            "<p>" + c.body + "</p>"
+          }
+          element2.innerHTML = s;
+        }
+
+      }
+    );
+
+
   }
 
-  closeModal(){
+  closeModal() {
     console.log("close");
   }
 

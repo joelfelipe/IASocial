@@ -18,4 +18,8 @@ export class PostService {
   getPost(id: string): Observable<any> {
     return this.http.get('https://jsonplaceholder.typicode.com/posts/' + id); 
   }
+
+  getComent(id: string): Observable<any> {
+    return this.http.get('https://jsonplaceholder.typicode.com/posts/' + id + '/comments'); 
+  }
 }
