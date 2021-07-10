@@ -66,14 +66,14 @@ export class HomeComponent implements OnInit {
       }
     );
     this.postService.getComent(id).subscribe(
-      (data: Post) => {
-        this.coments = data;
+      (data) => {
+        this.coments = data.reverse();
         // console.log(this.coments);
         const element2 = document.getElementById("comentarios");
         if (element2 != null) {
           var s = '<h1 style=\"font-weight: bold;\">Comentários</h1>';
           for(let c of this.coments){
-            s += "<h3 style=\"font-weight: bold;\">" + c.name + " comentou:</h3>" +
+            s += "<h3 style=\"font-weight: bold;\"> ID: " + c.id + " - " + c.name + " comentou:</h3>" +
             "<p>" + c.body + "</p>"
           }
           element2.innerHTML = s;
