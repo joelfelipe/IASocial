@@ -1,10 +1,10 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
 import { Post } from '../model/post.model';
 import { User } from '../model/user.model';
 import { PostService } from '../service/post.service';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-home',
@@ -14,10 +14,10 @@ import { PostService } from '../service/post.service';
 export class HomeComponent implements OnInit {
 
   user: User = new User();
-  // posts: Post = new Post();
+  post: Post = new Post();
   posts: any;
   pag : number = 1 ;
-  contador : number = 10;
+  contador : number = 8;
   constructor(private authService: AuthService, private router: Router, private postService: PostService) {
 
   }
@@ -52,6 +52,32 @@ export class HomeComponent implements OnInit {
         console.log(this.posts);
       }
     );
+  }
+
+  openModal(id: any){
+    console.log(id);
+    this.postService.getPost(id).subscribe(
+      (data: Post) => {
+        this.post = data;
+        console.log(this.post);
+        const element = document.getElementById("show");
+        if(element != null){
+          element.innerHTML = "<h1>" + this.post.title + "</h1>" + 
+                              "<p>" + this.post.body + "</p>";
+        }
+         
+      }
+    );
+    const element2 = document.getElementById("comentarios");
+    if(element2 != null){
+      element2.innerHTML = "<h1>Comentários</h1>" + 
+                           "<p>este é um comentario exemplo</p>";
+    }
+    
+  }
+
+  closeModal(){
+    console.log("close");
   }
 
 }

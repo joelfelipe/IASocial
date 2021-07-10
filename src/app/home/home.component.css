@@ -27,5 +27,15 @@ vertical-align:middle;
 }
 
 #Content{
-overflow:hidden; 
+overflow:auto; 
+}
+
+#show{
+    width: 90%;
+    margin: auto;
+}
+
+#comentarios{
+    width: 90%;
+    margin: auto;
 }

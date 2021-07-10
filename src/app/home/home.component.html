@@ -1,8 +1,8 @@
-<mat-grid-list cols="4" rowHeight="1:1">
-    <mat-grid-tile [colspan]="1" [rowspan]="1" style="background-color: aqua;">
+<mat-grid-list cols="3" rowHeight="3:1">
+    <mat-grid-tile [colspan]="1" [rowspan]="4" style="background-color: rgb(241, 239, 239) ; border: 5px solid; border-color:rgb(13, 81, 228);">
         <h2>Welcome, {{user.name}}! </h2>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="3" [rowspan]="2" style="background-color: rgb(0, 214, 36);" id="Content">
+    <mat-grid-tile [colspan]="1" [rowspan]="4" id="Content" style="background-color: rgb(241, 239, 239); border: 5px solid; border-color: green;">
         <div>
             <table class="table">
                 <thead>
@@ -25,7 +25,7 @@
                             </tr> -->
                         </td>
                         <td class="botao">
-                            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+                            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" id="{{p.id}}" (click)="openModal(p.id)"> 
                                 <mat-icon>visibility</mat-icon>
                             </button>
                         </td>
@@ -35,5 +35,12 @@
             <pagination-controls (pageChange)="pag = $event" class="text-right"></pagination-controls>
         </div>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1" style="background-color: rgb(219, 199, 14);"></mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="2" style="background-color: rgb(241, 239, 239); border: 5px solid; border-color:yellow;">
+        <div id="show" class="row">    
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="2" style="background-color: rgb(241, 239, 239); border: 5px solid; border-color:yellow;">
+        <div id="comentarios" class="row">
+        </div>
+    </mat-grid-tile>
 </mat-grid-list>
