@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit {
         // console.log(this.coments);
         const element2 = document.getElementById("comentarios");
         if (element2 != null) {
-          var s = '<h1 style=\"font-weight: bold;\">Comentários</h1>';
+          var s = '<h1 style=\"font-weight: bold; margin: auto; vertical-align: center;\">Comentários</h1>';
           for(let c of this.coments){
             s += "<h3 style=\"font-weight: bold;\"> ID: " + c.id + " - " + c.name + " comentou:</h3>" +
             "<p>" + c.body + "</p>"

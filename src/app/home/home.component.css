@@ -1,8 +1,7 @@
-table {
-    table-layout: fixed;
-    width: 90%;
-    margin:auto;
-}
+/* table{
+    width: 100%;
+    margin: 10%;
+} */
 
 th,
 td {
@@ -18,7 +17,7 @@ font-weight: bold;
 .id{
 width:8%;
 text-align: center;
-vertical-align:middle;
+vertical-align: middle;
 }
 .botao{
 width:10%;
@@ -37,11 +36,13 @@ overflow:auto;
 }
 
 #comentarios{
-    width: 90%;
-    height: 90%;
+    /* width: 90%;
+    height: 90%; */
     margin: auto;
     overflow-y: scroll;
     visibility:hidden;
+    height: 330px;
+    background-color: rgb(241, 239, 239);
 }
 
 #h1comentario{
@@ -53,6 +54,7 @@ overflow:auto;
     background-color: rgb(241, 239, 239);
     border: 8px solid;
     border-color:rgb(75, 75, 77);
+    max-width: 100%;
 }
 
 #hide{
@@ -66,10 +68,24 @@ overflow:auto;
 }
 
 #post{
-    width: 100%;
+    /* width: 100%; */
+    width: 300px;
+    height: 300px;
+    vertical-align: center;
+    margin: auto;
+    text-align: center;
 }
 
 .example-card {
     max-width: 400px;
   }
 
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}

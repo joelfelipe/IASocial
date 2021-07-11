@@ -1,55 +1,55 @@
-<mat-grid-list cols="3" rowHeight="3:1">
-    <mat-grid-tile [colspan]="1" [rowspan]="4" id="grid">
-        <mat-card class="example-card">
-            <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title>{{user.name}}</mat-card-title>
-                <mat-card-subtitle>{{user.username}}</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="../../assets/user-icon.jpg"
-                alt="Photo of {{user.name}}">
-        </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="4" id="Content" id="grid">
-        <div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="id">Id</th>
-                        <th>Título</th>
-                        <th class="botao">Visualizar</th>
-                    </tr>
-                </thead>
-                <tbody *ngFor="let p of posts | paginate: { itemsPerPage: contador, currentPage: pag }">
-                    <tr>
-                        <td class="id">{{p.id}}</td>
-                        <td>
-                            <h3>{{p.title}}</h3>
-                        </td>
-                        <td class="botao">
-                            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon"
-                                id="{{p.id}}" (click)="openModal(p.id)">
-                                <mat-icon>visibility</mat-icon>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <pagination-controls (pageChange)="pag = $event" class="text-right"></pagination-controls>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{user.name}}</mat-card-title>
+                    <mat-card-subtitle>{{user.username}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="../../assets/user-icon.jpg" alt="Photo of {{user.name}}">
+            </mat-card>
         </div>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="2" id="grid1">
-        <div id="post">
-            <div id="show" class="row">
+        <div class="col-sm-6">
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="id">Id</th>
+                            <th>Título</th>
+                            <th class="botao">Visualizar</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let p of posts | paginate: { itemsPerPage: contador, currentPage: pag }">
+                        <tr>
+                            <td class="id">{{p.id}}</td>
+                            <td>
+                                <h3>{{p.title}}</h3>
+                            </td>
+                            <td class="botao">
+                                <button mat-icon-button color="primary"
+                                    aria-label="Example icon button with a home icon" id="{{p.id}}"
+                                    (click)="openModal(p.id)">
+                                    <mat-icon>visibility</mat-icon>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="pag = $event" class="text-right"></pagination-controls>
             </div>
-            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" id="hide"
-                (click)="close()" [disabled]="isDisabled">
-                <mat-icon>visibility_off</mat-icon>
-            </button>
         </div>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="2" id="grid2">
-        <div id="comentarios" class="row">
+        <div class="col-sm-4">
+            <div id="post" class="row">
+                <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" id="hide"
+                    (click)="close()" [disabled]="isDisabled">
+                    <mat-icon>visibility_off</mat-icon>
+                </button>
+                <div id="show" class="row">
+                </div>
+            </div>
+            <div id="comentarios" class="row" class="row">
+            </div>
         </div>
-    </mat-grid-tile>
-</mat-grid-list>
+    </div>
+</div>
