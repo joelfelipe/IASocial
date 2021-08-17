@@ -1,6 +1,7 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-md-4">
             <mat-card class="example-card">
                 <mat-card-header>
                     <div mat-card-avatar class="example-header-image"></div>
@@ -10,46 +11,62 @@
                 <img mat-card-image src="../../assets/user-icon.jpg" alt="Photo of {{user.name}}">
             </mat-card>
         </div>
-        <div class="col-sm-6">
-            <div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th class="id">Id</th>
-                            <th>Título</th>
-                            <th class="botao">Visualizar</th>
-                        </tr>
-                    </thead>
-                    <tbody *ngFor="let p of posts | paginate: { itemsPerPage: contador, currentPage: pag }">
-                        <tr>
-                            <td class="id">{{p.id}}</td>
-                            <td>
-                                <h3>{{p.title}}</h3>
-                            </td>
-                            <td class="botao">
-                                <button mat-icon-button color="primary"
-                                    aria-label="Example icon button with a home icon" id="{{p.id}}"
-                                    (click)="openModal(p.id)">
-                                    <mat-icon>visibility</mat-icon>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <pagination-controls (pageChange)="pag = $event" class="text-right"></pagination-controls>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div id="post" class="row">
-                <button mat-icon-button color="primary" aria-label="Example icon button with a home icon" id="hide"
-                    (click)="close()" [disabled]="isDisabled">
-                    <mat-icon>visibility_off</mat-icon>
-                </button>
-                <div id="show" class="row">
+        <div class="col-md-8">
+            <div
+            class="search-results"
+            infiniteScroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollThrottle]="50"
+            (scrolled)="onScroll()"
+            >
+                <br>
+                <div class="post-content" *ngFor="let p of postCompleto">
+                    <!-- <img src="https://via.placeholder.com/400x150/FFB6C1/000000" alt="post-image" class="img-responsive post-image"> -->
+                    <div class="post-container">
+                        <img [src]="userImgUrl" alt="user" class="profile-photo-md pull-left">
+                        <div class="post-detail">
+                            <div class="user-info">
+                                <h5><a href="timeline.html" class="profile-link"> {{ p.name }} </a> <span
+                                        class="following">following {{ p.id }}</span></h5>
+                                <!-- <p class="text-muted">Published a photo about 3 mins ago</p> -->
+                            </div>
+                            <div class="reaction">
+                                <a class="btn text-green"><i class="fa fa-thumbs-up"></i> 13</a>
+                                <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
+                            </div>
+                            <div class="line-divider"></div>
+                            <div class="post-text">
+                                <h1> {{ p.title }} </h1>
+                                <p> {{ p.body }} <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i
+                                        class="em em-anguished"></i></p>
+                            </div>
+                            <div class="line-divider"></div>
+                            <div class="post-comment" *ngFor="let c of p.comments">
+                                <img [src]="userImgUrl" alt="" class="profile-photo-sm">
+                                <p><a class="profile-link"> {{ c.name | truncar : 12 : true }} </a><i
+                                        class="em em-laughing"></i> {{ c.body}} </p>
+                            </div>
+
+                            <div class="post-comment">
+                                <img [src]="userImgUrl" alt="" class="profile-photo-sm">
+                                <input type="text" class="form-control" placeholder="Post a comment">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div id="comentarios" class="row" class="row">
-            </div>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-md-12">
+            <ngx-spinner
+            bdOpacity = 0.9
+            bdColor = "rgba(51,51,51,0.4)"
+            size = "default"
+            color = "darkblue"
+            type = "square-loader"
+            [fullScreen] = "true">
+            </ngx-spinner>
         </div>
     </div>
 </div>

@@ -53,6 +53,9 @@ import { AuthService } from './service/auth.service';
 import { PostService } from './service/post.service'
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { TruncarPipe } from './pipes/truncar.pipe';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 
@@ -60,7 +63,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    TruncarPipe
   ],
   imports: [
     BrowserModule,
@@ -111,7 +115,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ScrollingModule,
     FormsModule,
     HttpClientModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    InfiniteScrollModule,
+    NgxSpinnerModule
   ],
   exports: [
     BrowserModule,

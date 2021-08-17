@@ -1,91 +1,88 @@
-/* table{
-    width: 100%;
-    margin: 10%;
-} */
+body{margin-top:20px;}
 
-th,
-td {
-text-align: left;
-vertical-align:middle;
+/*==================================================
+  Post Contents CSS
+  ==================================================*/
 
+.post-content{
+  background: #f8f8f8;
+  border-radius: 4px;
+  width: 100%;
+  border: 1px solid #f1f2f2;
+  margin-bottom: 20px;
+  overflow: hidden;
+  position: relative;
 }
 
-h3, h1{
-font-weight: bold;
+.post-content img.post-image, video.post-video, .google-maps{
+  width: 100%;
+  height: auto;
 }
 
-.id{
-width:8%;
-text-align: center;
-vertical-align: middle;
-}
-.botao{
-width:10%;
-text-align: center;
-vertical-align:middle;
+.post-content .google-maps .map{
+  height: 300px;
 }
 
-#Content{
-overflow:auto; 
+.post-content .post-container{
+  padding: 20px;
 }
 
-#show{
-    width: 90%;
-    margin: auto;
-    visibility:hidden;
+.post-content .post-container .post-detail{
+  margin-left: 65px;
+  position: relative;
 }
 
-#comentarios{
-    /* width: 90%;
-    height: 90%; */
-    margin: auto;
-    overflow-y: scroll;
-    visibility:hidden;
-    height: 330px;
-    background-color: rgb(241, 239, 239);
+.post-content .post-container .post-detail .post-text{
+  line-height: 24px;
+  margin: 0;
 }
 
-#h1comentario{
-    text-align: center;
-    vertical-align: top;
+.post-content .post-container .post-detail .reaction{
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
-#grid, #grid1, #grid2{
-    background-color: rgb(241, 239, 239);
-    border: 8px solid;
-    border-color:rgb(75, 75, 77);
-    max-width: 100%;
+.post-content .post-container .post-detail .post-comment{
+  display: inline-flex;
+  margin: 10px auto;
+  width: 100%;
 }
 
-#hide{
-    /* width: 100%; */
-    text-align: center;
-    margin: auto;
-    vertical-align: middle;
-    margin-left: 50%;
-    margin-right: auto;
-    
+.post-content .post-container .post-detail .post-comment img.profile-photo-sm{
+  margin-right: 10px;
 }
 
-#post{
-    /* width: 100%; */
-    width: 300px;
-    height: 300px;
-    vertical-align: center;
-    margin: auto;
-    text-align: center;
+.post-content .post-container .post-detail .post-comment .form-control{
+  height: 30px;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  margin: 7px 0;
+  min-width: 0;
 }
 
-.example-card {
-    max-width: 400px;
-  }
-
-  ::-webkit-scrollbar {
-    -webkit-appearance: none;
-    width: 7px;
+img.profile-photo-md {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
 }
-::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: rgba(0,0,0,.5);
-    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+
+img.profile-photo-sm {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.text-green {
+    color: #8dc63f;
+}
+
+.text-red {
+    color: #ef4136;
+}
+
+.following {
+    color: #8dc63f;
+    font-size: 12px;
+    margin-left: 20px;
 }

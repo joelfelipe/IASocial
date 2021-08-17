@@ -1,4 +1,4 @@
-export class Post {
+export class Comment {
     public postId!: number;
     public id!: number;
     public name!: string;

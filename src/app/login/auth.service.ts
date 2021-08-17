@@ -3,15 +3,15 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../model/user.model';
-import { Usuario } from './usuario';
+// import { Usuario } from './usuario';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  users: Usuario[] = [];
-  user!: Usuario;
+  users: User[] = [];
+  user!: User;
 
   constructor(private router: Router, private http: HttpClient) { }
 
